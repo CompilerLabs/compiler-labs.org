@@ -1,19 +1,6 @@
 import * as page_generation from "./generate-page-content.js"
 
 let site_json = {
-    pages: [
-        {
-            name: "empty",
-            top_links: "normal",
-            left_links: "empty",
-            content: [
-                {
-                    type: "text",
-                    data: "Page not found.",
-                }
-            ]
-        }
-    ],
     top_links: [
         {
             name: "empty",
@@ -24,11 +11,11 @@ let site_json = {
             content: [
                 {
                     text: "Welcome!",
-                    page: "welcome.home"
+                    page: "home"
                 },
                 {
                     text: "Links",
-                    page: "links",
+                    page: "links"
                 }
             ]
         }
@@ -41,21 +28,25 @@ let site_json = {
     ]
 };
 
+import * as empty_page from './pages/empty-page.js'
 import * as home_page from './pages/home-page.js'
+import * as links_page from './pages/links-page.js'
+
+let json_pages = {
+    empty: empty_page.json.page,
+    home: home_page.json.page,
+    links: links_page.json.page
+};
 
 // search for a page by name in the site json
-function search_for_page(json, name) {
-    // search for page
-    for (var i = 0; i < json.pages.length; i++) {
-        // check if correct page
-        if (json.pages[i].name == name) {
-            // return correct page
-            return json.pages[i];
-        }
-    }
-
+function search_for_page(name) {
+    // check to see if page is in list
+    if (name in json_pages) {
+        return json_pages[name];
     // page not found
-    return json.pages[0];
+    } else {
+        return json_pages.empty;
+    }
 }
 
 // search for a top link set by name in the site json
@@ -98,7 +89,7 @@ export function goto_page(page_name) {
     var page_json_left_links;
 
     // get page json data
-    page_json = home_page.json.page;
+    page_json = search_for_page(page_name);
     page_json_top_links = search_for_top_link_set(site_json, page_json.top_links);
     page_json_left_links = search_for_left_link_set(site_json, page_json.left_links);
 
@@ -113,5 +104,8 @@ export function goto_page(page_name) {
 // load page on site load
 window.addEventListener("load", () => {
     // goto page
-    goto_page("welcome.home");
+    goto_page("home");
 });
+
+// expose goto_page globally
+window.goto_page = goto_page;
