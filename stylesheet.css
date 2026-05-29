@@ -42,7 +42,8 @@
     --page-left-side-navigation-link-padding-thickness: 10px;
     --page-document-text-padding-thickness: 20px;
     --page-code-text-padding-thickness: 2px;
-    --text-font: 'Arial', sans-serif;
+    /*--text-font: 'Arial', sans-serif;*/
+    --text-font: "Courier New", monospace;
 }
 
 html {

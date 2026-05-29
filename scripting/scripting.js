@@ -10,12 +10,16 @@ let site_json = {
             name: "normal",
             content: [
                 {
-                    text: "Welcome!",
+                    text: "Welcome",
                     page: "home"
                 },
                 {
-                    text: "Links",
-                    page: "links"
+                    text: "Anvil",
+                    page: "anvil_docs_home"
+                },
+                {
+                    text: "DragonForge",
+                    page: "df_docs_home"
                 }
             ]
         }
@@ -31,11 +35,15 @@ let site_json = {
 import * as empty_page from './pages/empty-page.js'
 import * as home_page from './pages/home-page.js'
 import * as links_page from './pages/links-page.js'
+import * as df_docs_home_page from './pages/dragon-forge/dragon-forge-language.js'
+import * as anvil_pages from './pages/anvil-language/anvil-language.js'
 
 let json_pages = {
     empty: empty_page.json.page,
     home: home_page.json.page,
-    links: links_page.json.page
+    links: links_page.json.page,
+    df_docs_home: df_docs_home_page.json.page,
+    anvil_docs_home: anvil_pages.json.page
 };
 
 // search for a page by name in the site json
