@@ -1,6 +1,6 @@
 export let json = {
     page: {
-        left_links: "empty",
+        left_links: "",
         content: [
             {
                 type: "header",

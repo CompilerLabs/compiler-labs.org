@@ -1,7 +1,5 @@
 export let json = {
     page: {
-        name: "home",
-        top_links: "normal",
         left_links: "empty",
         content: [
             {

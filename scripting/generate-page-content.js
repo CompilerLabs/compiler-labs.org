@@ -153,9 +153,9 @@ export function generate_side_links(json) {
     var output = "";
 
     // write pieces in order
-    for (var i = 0; i < json.content.length; i++) {
+    for (var i = 0; i < json.length; i++) {
         // get content
-        output += generate_side_link(json.content[i].text, json.content[i].page);
+        output += generate_side_link(json[i].text, json[i].page);
     }
 
     return output;

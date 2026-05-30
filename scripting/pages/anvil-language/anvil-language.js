@@ -1,8 +1,6 @@
 export let json = {
     page: {
-        name: "anvil_docs_home",
-        top_links: "normal",
-        left_links: "empty",
+        left_links: "anvil_language",
         content: [
             {
                 type: "header",
